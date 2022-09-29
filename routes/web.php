@@ -19,4 +19,6 @@ $router->get('/', function () use ($router) {
 
 $router->group(["prefix" => "user"], function () use ($router) {
     $router->get("getalluser", ["uses" => "UserController@getAllUser"]);
+    $router->get("getuserbyid", ["uses" => "UserController@getUserById"]);
+    $router->post("getlogin", ["uses" => "UserController@getLogin"]);
 });
