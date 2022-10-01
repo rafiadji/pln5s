@@ -32,6 +32,7 @@ class UserController extends Controller
                     "id" => $user->id,
                     "username" => $user->username,
                     "nama" => $user->nama,
+                    "role" => $user->role,
                 ]
             ];
             return response()->json($dt);
@@ -41,9 +42,10 @@ class UserController extends Controller
                 "success" => false,
                 "message" => "username atau password salah",
                 "data" => [
-                    "id" => 0,
+                    "id" => -1,
                     "username" => "",
                     "nama" => "",
+                    "role" => -1,
                 ]
             ];
             return response()->json($dt);
