@@ -1,0 +1,128 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "PLN 5S API",
+        "contact": {
+            "name": "PLN 5S",
+            "email": "rafiadji13@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/user/getalluser": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get All User",
+                "description": "Untuk mendapatkan semua data user",
+                "operationId": "getAllUser",
+                "responses": {
+                    "200": {
+                        "description": "Return All Data User"
+                    }
+                }
+            }
+        },
+        "/user/getuserbyid/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get User By ID",
+                "description": "Untuk mendapatkan data user berdasarkan id",
+                "operationId": "getUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return Data User by Id"
+                    }
+                }
+            }
+        },
+        "/user/getlogin": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login",
+                "description": "Untuk Login User",
+                "operationId": "getLogin",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "username": {
+                                        "description": "Masukkan Username",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Masukkan Password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Return Data User yang login"
+                    }
+                }
+            }
+        },
+        "/user/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register",
+                "description": "Untuk Registrasi user",
+                "operationId": "register",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "username": {
+                                        "description": "Masukkan Username",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Masukkan Password",
+                                        "type": "string"
+                                    },
+                                    "nama": {
+                                        "description": "Masukkan Nama",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Return json info"
+                    }
+                }
+            }
+        }
+    }
+}
