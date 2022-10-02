@@ -27,3 +27,12 @@ $router->group(["prefix" => "user"], function () use ($router) {
 $router->group(["prefix" => "tempat"], function () use ($router) {
     $router->get("getalltempat", ["uses" => "TempatController@getAllTempat"]);
 });
+
+$router->group(["prefix" => "area"], function () use ($router) {
+    $router->get("getjenisarea", ["uses" => "AreaController@getJenisArea"]);
+    $router->get("getareabyjenis/{id}", ["uses" => "AreaController@getAreaByJenis"]);
+});
+
+$router->group(["prefix" => "nilai"], function () use ($router) {
+    $router->get("getallpenilaian", ["uses" => "PenilaianController@getAllPenilaian"]);
+});

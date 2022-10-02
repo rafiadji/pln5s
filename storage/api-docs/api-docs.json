@@ -9,6 +9,119 @@
         "version": "1.0"
     },
     "paths": {
+        "/area/getjenisarea": {
+            "get": {
+                "tags": [
+                    "Area"
+                ],
+                "summary": "Get Jenis Area",
+                "description": "Untuk mendapatkan semua data Jenis Area",
+                "operationId": "getJenisArea",
+                "responses": {
+                    "200": {
+                        "description": "Return Jenis Area",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": [
+                                    {
+                                        "id": 0,
+                                        "jenis": ""
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/area/getareabyjenis/{id}": {
+            "get": {
+                "tags": [
+                    "Area"
+                ],
+                "summary": "Get Area By Jenis",
+                "description": "Untuk mendapatkan semua data Area by jenis",
+                "operationId": "getAreaByJenis",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID Jeniss",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return Area List",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": [
+                                    {
+                                        "id": 0,
+                                        "namaArea": "",
+                                        "jenisId": 0,
+                                        "jenis": ""
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/nilai/getallpenilaian": {
+            "get": {
+                "tags": [
+                    "Penilaian"
+                ],
+                "summary": "Get All Penilaian",
+                "description": "Untuk mendapatkan semua data Penilaian",
+                "operationId": "getAllPenilaian",
+                "responses": {
+                    "200": {
+                        "description": "Return All Data Penilaian",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": [
+                                    {
+                                        "id": 1,
+                                        "penilaian": "Seiri"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "penilaian": "Seiton"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "penilaian": "Seiso"
+                                    },
+                                    {
+                                        "id": 4,
+                                        "penilaian": "Seiketsu"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "penilaian": "Shitsuke"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/tempat/getalltempat": {
             "get": {
                 "tags": [
