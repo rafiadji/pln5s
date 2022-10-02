@@ -16,8 +16,20 @@ class UserController extends Controller
      *     operationId="getAllUser",
      *     @OA\Response(
      *         response="200",
-     *         description="Return All Data User"
-     *     )
+     *         description="Return All Data User",
+     *         @OA\JsonContent(
+     *           type="object",
+     *           example={
+     *              0:{
+     *                  "id":0,
+     *                  "username":"",
+     *                  "password":"",
+     *                  "nama":"",
+     *                  "role":0
+     *              }
+     *           }
+     *         ),
+     *     ),
      * )
      */
     public function getAllUser()
@@ -40,7 +52,17 @@ class UserController extends Controller
      *     ),
      *     @OA\Response(
      *         response="200",
-     *         description="Return Data User by Id"
+     *         description="Return Data User by Id",
+     *         @OA\JsonContent(
+     *           type="object",
+     *           example={
+     *              "id":0,
+     *              "username":"",
+     *              "password":"",
+     *              "nama":"",
+     *              "role":0
+     *           }
+     *         ),
      *     )
      * )
      */
@@ -75,7 +97,20 @@ class UserController extends Controller
      *     ),
      *     @OA\Response(
      *         response="200",
-     *         description="Return Data User yang login"
+     *         description="Return Data User yang login",
+     *         @OA\JsonContent(
+     *           type="object",
+     *           example={
+     *              "success":true,
+     *              "message":"berhasil login",
+     *              "data":{
+     *                  "id":0,
+     *                  "username":"",
+     *                  "nama":"",
+     *                  "role":0,
+     *              }
+     *           }
+     *         ),
      *     )
      * )
      */
@@ -144,7 +179,14 @@ class UserController extends Controller
      *     ),
      *     @OA\Response(
      *         response="200",
-     *         description="Return json info"
+     *         description="Return json info",
+     *         @OA\JsonContent(
+     *           type="object",
+     *           example={
+     *              "success":true,
+     *              "message":"Data berhasil disimpan"
+     *           }
+     *         ),
      *     )
      * )
      */
@@ -156,14 +198,13 @@ class UserController extends Controller
                 "success" => true,
                 "message" => "Data berhasil disimpan"
             ];
-            return response()->json($dt);
         }
         else {
             $dt = [
                 "success" => false,
                 "message" => "Data gagal disimpan"
             ];
-            return response()->json($dt);
         }
+        return response()->json($dt);
     }
 }

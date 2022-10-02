@@ -17,7 +17,18 @@ class TempatController extends Controller
      *     operationId="getAllTempat",
      *     @OA\Response(
      *         response="200",
-     *         description="Return All Data Tempat"
+     *         description="Return All Data Tempat",
+     *         @OA\JsonContent(
+     *           type="object",
+     *           example= {
+     *              {
+     *                  "id":0,
+     *                  "namaTempat":"",
+     *                  "jenisId":0,
+     *                  "jenis":""
+     *              }
+     *           }
+     *         ),
      *     )
      * )
      */
