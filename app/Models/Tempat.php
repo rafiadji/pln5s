@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tempat extends Model
 {
-    protected $table = 'tempat';
+    protected $table = 'Tempat';
 
     protected $guarded = [];
 
