@@ -9,6 +9,21 @@
         "version": "1.0"
     },
     "paths": {
+        "/tempat/getalltempat": {
+            "get": {
+                "tags": [
+                    "Tempat"
+                ],
+                "summary": "Get All Tempat",
+                "description": "Untuk mendapatkan semua data Tempat",
+                "operationId": "getAllTempat",
+                "responses": {
+                    "200": {
+                        "description": "Return All Data Tempat"
+                    }
+                }
+            }
+        },
         "/user/getalluser": {
             "get": {
                 "tags": [

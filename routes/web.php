@@ -23,3 +23,7 @@ $router->group(["prefix" => "user"], function () use ($router) {
     $router->post("getlogin", ["uses" => "UserController@getLogin"]);
     $router->post("register", ["uses" => "UserController@register"]);
 });
+
+$router->group(["prefix" => "tempat"], function () use ($router) {
+    $router->get("getalltempat", ["uses" => "TempatController@getAllTempat"]);
+});
