@@ -14,6 +14,6 @@ class Area extends Model
     
     public function jenisArea()
     {
-        return $this->belongsTo(jenisArea::class, 'jenisId');
+        return $this->belongsTo(JenisArea::class, 'jenisId');
     }
 }
