@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     * @OA\GET(path="/user/getalluser",
+     * @OA\Get(path="/user/getalluser",
      *     tags={"User"},
      *     summary="Get All User",
      *     description="Untuk mendapatkan semua data user",
@@ -38,7 +38,7 @@ class UserController extends Controller
     }
 
     /**
-     * @OA\GET(path="/user/getuserbyid/{id}",
+     * @OA\Get(path="/user/getuserbyid/{id}",
      *     tags={"User"},
      *     summary="Get User By ID",
      *     description="Untuk mendapatkan data user berdasarkan id",
@@ -72,7 +72,7 @@ class UserController extends Controller
     }
 
     /**
-     * @OA\POST(path="/user/getlogin",
+     * @OA\Post(path="/user/getlogin",
      *     tags={"User"},
      *     summary="Login",
      *     description="Untuk Login User",
@@ -149,7 +149,7 @@ class UserController extends Controller
     }
 
     /**
-     * @OA\POST(path="/user/register",
+     * @OA\Post(path="/user/register",
      *     tags={"User"},
      *     summary="Register",
      *     description="Untuk Registrasi user",

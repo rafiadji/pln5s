@@ -26,6 +26,8 @@ $router->group(["prefix" => "user"], function () use ($router) {
 
 $router->group(["prefix" => "tempat"], function () use ($router) {
     $router->get("getalltempat", ["uses" => "TempatController@getAllTempat"]);
+    $router->get("getjenistempat", ["uses" => "TempatController@getJenisTempat"]);
+    $router->get("gettempatbyjenis/{id}", ["uses" => "TempatController@getTempatByJenis"]);
 });
 
 $router->group(["prefix" => "area"], function () use ($router) {

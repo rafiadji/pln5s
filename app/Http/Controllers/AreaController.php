@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class AreaController extends Controller
 {
     /**
-     * @OA\GET(path="/area/getjenisarea",
+     * @OA\Get(path="/area/getjenisarea",
      *     tags={"Area"},
      *     summary="Get Jenis Area",
      *     description="Untuk mendapatkan semua data Jenis Area",
@@ -45,7 +45,7 @@ class AreaController extends Controller
     }
 
     /**
-     * @OA\GET(path="/area/getareabyjenis/{id}",
+     * @OA\Get(path="/area/getareabyjenis/{id}",
      *     tags={"Area"},
      *     summary="Get Area By Jenis",
      *     description="Untuk mendapatkan semua data Area by jenis",
@@ -53,7 +53,7 @@ class AreaController extends Controller
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="ID Jeniss",
+     *         description="ID Jenis",
      *         required=true,
      *         @OA\Schema(type="integer")
      *     ),

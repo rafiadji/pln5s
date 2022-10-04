@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PenilaianController extends Controller
 {
     /**
-     * @OA\GET(path="/nilai/getallpenilaian",
+     * @OA\Get(path="/nilai/getallpenilaian",
      *     tags={"Penilaian"},
      *     summary="Get All Penilaian",
      *     description="Untuk mendapatkan semua data Penilaian",
