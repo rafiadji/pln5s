@@ -221,6 +221,121 @@
                 }
             }
         },
+        "/trans/submitnilai": {
+            "post": {
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Submit Nilai",
+                "description": "Untuk Submit Nilai",
+                "operationId": "submitNilai",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "userId": {
+                                        "description": "Masukkan User Id",
+                                        "type": "integer"
+                                    },
+                                    "penilaianId": {
+                                        "description": "Masukkan Penilaian Id",
+                                        "type": "integer"
+                                    },
+                                    "tempatId": {
+                                        "description": "Masukkan Tempat Id",
+                                        "type": "integer"
+                                    },
+                                    "areaId": {
+                                        "description": "Masukkan Area Id",
+                                        "type": "integer"
+                                    },
+                                    "tanggal": {
+                                        "description": "Masukkan Tanggal",
+                                        "type": "integer"
+                                    },
+                                    "statusKondisi": {
+                                        "description": "Masukkan Status Kondisi (Ya = 1 / Tidak = 0)",
+                                        "type": "integer"
+                                    },
+                                    "catatan": {
+                                        "description": "Masukkan Catatan",
+                                        "type": "string"
+                                    },
+                                    "gambar": {
+                                        "description": "Masukkan Gambar",
+                                        "type": "file"
+                                    },
+                                    "status": {
+                                        "description": "Masukkan status",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Return json info",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "success": true,
+                                    "message": "Data berhasil disimpan"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/trans/history/{id}": {
+            "get": {
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Get Transaksi By User Id",
+                "description": "Untuk mendapatkan semua data Transaksi By User Id",
+                "operationId": "history",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID User",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return Transaksi List",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": [
+                                    {
+                                        "id": 0,
+                                        "namaArea": "",
+                                        "jenisId": 0,
+                                        "jenis": ""
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/user/getalluser": {
             "get": {
                 "tags": [

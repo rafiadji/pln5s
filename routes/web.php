@@ -38,3 +38,8 @@ $router->group(["prefix" => "area"], function () use ($router) {
 $router->group(["prefix" => "nilai"], function () use ($router) {
     $router->get("getallpenilaian", ["uses" => "PenilaianController@getAllPenilaian"]);
 });
+
+$router->group(["prefix" => "trans"], function () use ($router) {
+    $router->post("submitnilai", ["uses" => "TransaksiController@submitNilai"]);
+    $router->get("history/{id}", ["uses" => "TransaksiController@history"]);
+});
