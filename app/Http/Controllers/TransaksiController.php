@@ -55,9 +55,9 @@ class TransaksiController extends Controller
      *                      description="Masukkan Catatan"
      *                  ),
      *                  @OA\Property(
-     *                      property="gambar",
+     *                      property="bukti",
      *                      type="file",
-     *                      description="Masukkan Gambar"
+     *                      description="Masukkan Gambar bukti"
      *                  ),
      *                  @OA\Property(
      *                      property="status",
@@ -82,16 +82,14 @@ class TransaksiController extends Controller
      */
     public function submitNilai(Request $req)
     {
-        // if($req->file('gambar')){
-		// 	$file = $req->file('gambar');
-		// 	$namefile = $req->input('userId').$req->input('penilaianId').$req->input('tempatId').$req->input('areaId')."_".$req->input('tanggal').".".$file->getClientOriginalExtension();
-        //     $file->move(storage_path('app/bukti'), $namefile);
-		// 	// $request->merge(["foto" => $namefile]);
-		// 	// $file->move("img/upload", $namefile);
-        //     // $jemaat->update($request->except(['file']));
-		// }
-        // die;
-        if(Transaksi::create($req->except(['gambar']))) {
+        if($req->file('bukti')){
+			$file = $req->file('bukti');
+			$namefile = $req->input('userId').$req->input('penilaianId').$req->input('tempatId').$req->input('areaId')."_".$req->input('tanggal').".".$file->getClientOriginalExtension();
+            $file->move(storage_path('app/bukti'), $namefile);
+            $image_url = base64_encode("http://" . $req->getHost() . ":8002/bukti/" . $namefile);
+            $req->merge(["gambar" => $image_url]);
+		}
+        if(Transaksi::create($req->except(['bukti']))) {
             $dt = [
                 "success" => true,
                 "message" => "Data berhasil disimpan"

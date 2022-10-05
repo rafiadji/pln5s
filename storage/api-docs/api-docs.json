@@ -268,8 +268,8 @@
                                         "description": "Masukkan Catatan",
                                         "type": "string"
                                     },
-                                    "gambar": {
-                                        "description": "Masukkan Gambar",
+                                    "bukti": {
+                                        "description": "Masukkan Gambar bukti",
                                         "type": "file"
                                     },
                                     "status": {
