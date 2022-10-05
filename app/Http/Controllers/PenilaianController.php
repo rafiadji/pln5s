@@ -22,23 +22,28 @@ class PenilaianController extends Controller
      *           example= {
      *              {
      *                  "id":1,
-     *                  "penilaian":"Seiri"
+     *                  "penilaian":"Seiri",
+     *                  "deskripsi":"....."
      *              },
      *              {
      *                  "id":2,
-     *                  "penilaian":"Seiton"
+     *                  "penilaian":"Seiton",
+     *                  "deskripsi":"....."
      *              },
      *              {
      *                  "id":3,
-     *                  "penilaian":"Seiso"
+     *                  "penilaian":"Seiso",
+     *                  "deskripsi":"....."
      *              },
      *              {
      *                  "id":4,
-     *                  "penilaian":"Seiketsu"
+     *                  "penilaian":"Seiketsu",
+     *                  "deskripsi":"....."
      *              },
      *              {
      *                  "id":5,
-     *                  "penilaian":"Shitsuke"
+     *                  "penilaian":"Shitsuke",
+     *                  "deskripsi":"....."
      *              },
      *           },
      *         ),
@@ -53,6 +58,7 @@ class PenilaianController extends Controller
             $tmp = [
                 "id" => $nilai->id,
                 "penilaian" => $nilai->penilaian,
+                "deskripsi" => $nilai->deskripsi,
             ];
             array_push($dt, $tmp);
         }
