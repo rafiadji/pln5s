@@ -78,7 +78,7 @@
                 }
             }
         },
-        "/nilai/getallpenilaian": {
+        "/nilai/getallpenilaian/{userId}/{tempatId}/{areaId}": {
             "get": {
                 "tags": [
                     "Penilaian"
@@ -86,6 +86,35 @@
                 "summary": "Get All Penilaian",
                 "description": "Untuk mendapatkan semua data Penilaian",
                 "operationId": "getAllPenilaian",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "ID User",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "tempatId",
+                        "in": "path",
+                        "description": "ID Tempat",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "areaId",
+                        "in": "path",
+                        "description": "ID Area",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Return All Data Penilaian",

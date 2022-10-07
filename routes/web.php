@@ -36,7 +36,7 @@ $router->group(["prefix" => "area"], function () use ($router) {
 });
 
 $router->group(["prefix" => "nilai"], function () use ($router) {
-    $router->get("getallpenilaian", ["uses" => "PenilaianController@getAllPenilaian"]);
+    $router->get("getallpenilaian/{userId}/{tempatId}/{areaId}", ["uses" => "PenilaianController@getAllPenilaian"]);
 });
 
 $router->group(["prefix" => "trans"], function () use ($router) {
