@@ -104,10 +104,27 @@ class UserController extends Controller
      *              "success":true,
      *              "message":"berhasil login",
      *              "data":{
-     *                  "id":0,
+     *                  "id":1,
+     *                  "username":".....",
+     *                  "nama":"...",
+     *                  "role":1,
+     *              }
+     *           }
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Username Password tidak ditemukan",
+     *         @OA\JsonContent(
+     *           type="object",
+     *           example={
+     *              "success":false,
+     *              "message":"username atau password salah",
+     *              "data":{
+     *                  "id":-1,
      *                  "username":"",
      *                  "nama":"",
-     *                  "role":0,
+     *                  "role":-1,
      *              }
      *           }
      *         ),
@@ -131,7 +148,7 @@ class UserController extends Controller
                     "role" => $user->role,
                 ]
             ];
-            return response()->json($dt);
+            return response()->json($dt, 200);
         }
         else {
             $dt = [
@@ -144,7 +161,7 @@ class UserController extends Controller
                     "role" => -1,
                 ]
             ];
-            return response()->json($dt);
+            return response()->json($dt, 404);
         }
     }
 
@@ -187,12 +204,32 @@ class UserController extends Controller
      *              "message":"Data berhasil disimpan"
      *           }
      *         ),
+     *     ),
+     *     @OA\Response(
+     *         response="406",
+     *         description="Return json info",
+     *         @OA\JsonContent(
+     *           type="object",
+     *           example={
+     *              "success":false,
+     *              "message":"Username tidak tersedia"
+     *           }
+     *         ),
      *     )
      * )
      */
     public function register(Request $req)
     {
         $req['role'] = 1;
+        $check = User::where("username", "=", $req->input("username"))->first();
+        
+        if($check != NULL){
+            $dt = [
+                "success" => false,
+                "message" => "Username tidak tersedia"
+            ];
+            return response()->json($dt, 406);
+        }
         if(User::create($req->all())) {
             $dt = [
                 "success" => true,
