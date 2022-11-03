@@ -105,15 +105,15 @@ class TransaksiController extends Controller
     }
 
     /**
-     * @OA\Get(path="/trans/history/{id}",
+     * @OA\Get(path="/trans/history/{nilai}",
      *     tags={"Transaksi"},
-     *     summary="Get Transaksi By User Id",
-     *     description="Untuk mendapatkan semua data Transaksi By User Id",
-     *     operationId="history",
+     *     summary="Get history by penilaian",
+     *     description="Untuk mendapatkan semua data Transaksi By Penilaian Id",
+     *     operationId="historyNilai",
      *     @OA\Parameter(
-     *         name="id",
+     *         name="nilai",
      *         in="path",
-     *         description="ID User",
+     *         description="ID Penilaian",
      *         required=true,
      *         @OA\Schema(type="integer")
      *     ),
@@ -134,9 +134,154 @@ class TransaksiController extends Controller
      *     )
      * )
      */
-    public function history($id)
+
+     /**
+     * @OA\Get(path="/trans/history/{nilai}/{tempatId}",
+     *     tags={"Transaksi"},
+     *     summary="Get history by penilaian and tempat",
+     *     description="Untuk mendapatkan semua data Transaksi By Penilaian Id dan Tempat Id",
+     *     operationId="historyTempat",
+     *     @OA\Parameter(
+     *         name="nilai",
+     *         in="path",
+     *         description="ID Penilaian",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Parameter(
+     *         name="tempatId",
+     *         in="path",
+     *         description="ID Tempat",
+     *         required=false,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Return Transaksi List",
+     *         @OA\JsonContent(
+     *           type="object",
+     *           example= {
+     *              {
+     *                  "id":0,
+     *                  "namaArea":"",
+     *                  "jenisId":0,
+     *                  "jenis":""
+     *              }
+     *           }
+     *         ),
+     *     )
+     * )
+     */
+
+     /**
+     * @OA\Get(path="/trans/history/{nilai}/{tempatId}/{areaId}",
+     *     tags={"Transaksi"},
+     *     summary="Get history by penilaian and tempat and area",
+     *     description="Untuk mendapatkan semua data Transaksi By Penilaian Id, Tempat Id dan Area Id",
+     *     operationId="historyArea",
+     *     @OA\Parameter(
+     *         name="nilai",
+     *         in="path",
+     *         description="ID Penilaian",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Parameter(
+     *         name="tempatId",
+     *         in="path",
+     *         description="ID Tempat",
+     *         required=false,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Parameter(
+     *         name="areaId",
+     *         in="path",
+     *         description="ID Area",
+     *         required=false,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Return Transaksi List",
+     *         @OA\JsonContent(
+     *           type="object",
+     *           example= {
+     *              {
+     *                  "id":0,
+     *                  "namaArea":"",
+     *                  "jenisId":0,
+     *                  "jenis":""
+     *              }
+     *           }
+     *         ),
+     *     )
+     * )
+     */
+
+     /**
+     * @OA\Get(path="/trans/history/{nilai}/{tempatId}/{areaId}/{id}",
+     *     tags={"Transaksi"},
+     *     summary="Get history by penilaian and tempat and area and user",
+     *     description="Untuk mendapatkan semua data Transaksi By Penilaian Id, Tempat Id, Area Id and User Id",
+     *     operationId="historyUser",
+     *     @OA\Parameter(
+     *         name="nilai",
+     *         in="path",
+     *         description="ID Penilaian",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Parameter(
+     *         name="tempatId",
+     *         in="path",
+     *         description="ID Tempat",
+     *         required=false,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Parameter(
+     *         name="areaId",
+     *         in="path",
+     *         description="ID Area",
+     *         required=false,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID User",
+     *         required=false,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Return Transaksi List",
+     *         @OA\JsonContent(
+     *           type="object",
+     *           example= {
+     *              {
+     *                  "id":0,
+     *                  "namaArea":"",
+     *                  "jenisId":0,
+     *                  "jenis":""
+     *              }
+     *           }
+     *         ),
+     *     )
+     * )
+     */
+    public function history($nilai, $tempatId = null, $areaId = null, $id = null)
     {
-        $trans = Transaksi::where("userId", "=", $id)->get();
+        $trans = Transaksi::where("penilaianId", "=", $nilai);
+        if ($tempatId != null) {
+            $trans->where("tempatId", "=", $tempatId);
+        }
+        if ($areaId != null) {
+            $trans->where("areaId", "=", $areaId);
+        }
+        if ($id != null) {
+            $trans->where("userId", "=", $id);
+        }
+        $trans = $trans->get();
         $dt = [];
         foreach ($trans as $tr) {
             $tmp = [

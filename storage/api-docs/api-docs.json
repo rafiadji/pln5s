@@ -329,20 +329,197 @@
                 }
             }
         },
-        "/trans/history/{id}": {
+        "/trans/history/{nilai}": {
             "get": {
                 "tags": [
                     "Transaksi"
                 ],
-                "summary": "Get Transaksi By User Id",
-                "description": "Untuk mendapatkan semua data Transaksi By User Id",
-                "operationId": "history",
+                "summary": "Get history by penilaian",
+                "description": "Untuk mendapatkan semua data Transaksi By Penilaian Id",
+                "operationId": "historyNilai",
                 "parameters": [
+                    {
+                        "name": "nilai",
+                        "in": "path",
+                        "description": "ID Penilaian",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return Transaksi List",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": [
+                                    {
+                                        "id": 0,
+                                        "namaArea": "",
+                                        "jenisId": 0,
+                                        "jenis": ""
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/trans/history/{nilai}/{tempatId}": {
+            "get": {
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Get history by penilaian and tempat",
+                "description": "Untuk mendapatkan semua data Transaksi By Penilaian Id dan Tempat Id",
+                "operationId": "historyTempat",
+                "parameters": [
+                    {
+                        "name": "nilai",
+                        "in": "path",
+                        "description": "ID Penilaian",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "tempatId",
+                        "in": "path",
+                        "description": "ID Tempat",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return Transaksi List",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": [
+                                    {
+                                        "id": 0,
+                                        "namaArea": "",
+                                        "jenisId": 0,
+                                        "jenis": ""
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/trans/history/{nilai}/{tempatId}/{areaId}": {
+            "get": {
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Get history by penilaian and tempat and area",
+                "description": "Untuk mendapatkan semua data Transaksi By Penilaian Id, Tempat Id dan Area Id",
+                "operationId": "historyArea",
+                "parameters": [
+                    {
+                        "name": "nilai",
+                        "in": "path",
+                        "description": "ID Penilaian",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "tempatId",
+                        "in": "path",
+                        "description": "ID Tempat",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "areaId",
+                        "in": "path",
+                        "description": "ID Area",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return Transaksi List",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": [
+                                    {
+                                        "id": 0,
+                                        "namaArea": "",
+                                        "jenisId": 0,
+                                        "jenis": ""
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/trans/history/{nilai}/{tempatId}/{areaId}/{id}": {
+            "get": {
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Get history by penilaian and tempat and area and user",
+                "description": "Untuk mendapatkan semua data Transaksi By Penilaian Id, Tempat Id, Area Id and User Id",
+                "operationId": "historyUser",
+                "parameters": [
+                    {
+                        "name": "nilai",
+                        "in": "path",
+                        "description": "ID Penilaian",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "tempatId",
+                        "in": "path",
+                        "description": "ID Tempat",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "areaId",
+                        "in": "path",
+                        "description": "ID Area",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
                     {
                         "name": "id",
                         "in": "path",
                         "description": "ID User",
-                        "required": true,
+                        "required": false,
                         "schema": {
                             "type": "integer"
                         }

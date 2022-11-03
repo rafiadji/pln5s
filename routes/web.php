@@ -41,5 +41,8 @@ $router->group(["prefix" => "nilai"], function () use ($router) {
 
 $router->group(["prefix" => "trans"], function () use ($router) {
     $router->post("submitnilai", ["uses" => "TransaksiController@submitNilai"]);
-    $router->get("history/{id}", ["uses" => "TransaksiController@history"]);
+    $router->get("history/{nilai}", ["uses" => "TransaksiController@history"]);
+    $router->get("history/{nilai}/{tempatId}", ["uses" => "TransaksiController@history"]);
+    $router->get("history/{nilai}/{tempatId}/{areaId}", ["uses" => "TransaksiController@history"]);
+    $router->get("history/{nilai}/{tempatId}/{areaId}/{id}", ["uses" => "TransaksiController@history"]);
 });
